@@ -1,0 +1,161 @@
+# Tell xrandr which monitor is on the left and which is on the right.
+exec --no-startup-id xrandr --output LVDS-1 --auto --left-of VGA-1
+exec --no-startup-id nm-applet   # Network Manager
+exec --no-startup-id udiskie  # Automount USB
+exec --no-startup-id fcitx -d # Language switching daemon
+exec --no-startup-id sudo fanup AUTO # Make sure the computer doesn't overheat owo
+# Setup workspace
+set $workspace1 "1:  Discord"
+set $workspace2 "2:  Brave"
+set $workspaceMusic "M: ♫ "
+exec --no-startup-id discord-canary
+exec --no-startup-id brave-dev
+exec --no-startup-id redshift -l 3.10710:101.61390 -b 0.8:0.8
+assign [class="^discord$"] workspace $workspace1
+assign [title=" - Brave$"] workspace $workspace2
+
+font pango:Fira Code, Awesome 10
+
+floating_minimum_size 50 x 50
+floating_maximum_size 600 x 600 
+
+# Mod key = Left Windows Key
+set $mod Mod4
+
+# Kill focused window with modifier-D
+bindsym $mod+d kill
+
+# Shortcuts that allow programs to be launched
+bindsym $mod+p exec rofi -show run # Basically start menu
+bindsym $mod+Shift+p exec dmenu_run # Alternative just in case something breaks
+bindsym $mod+t exec termite # Open the terminal
+
+# Screenshots are fun!
+bindsym $mod+o exec scrot -ub 'Screenshot from %Y-%m-%d %H-%M-%S.png' -e 'mv "$f" ~/Pictures/';exec notify-send -a Scrot Scrot "A screenshot from the current window has been taken."
+bindsym --release $mod+Ctrl+o exec scrot -s 'Screenshot from %Y-%m-%d %H-%M-%S.png' -e 'mv "$f" ~/Pictures/; notify-send -a Scrot Scrot "A screenshot from the selection has been taken."'
+bindsym $mod+Shift+o exec scrot 'Screenshot from %Y-%m-%d %H-%M-%S.png' -e 'mv "$f" ~/Pictures/';exec notify-send -a Scrot Scrot "A global screenshot has been taken."
+
+# We say hjkl instead of jkl;
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Use $mod+shift+hjkl to move a window :)
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Use $mod+Ctrl+jl to split windows on right and left respectively.
+bindsym $mod+Ctrl+j split vertical
+bindsym $mod+Ctrl+l split horizontal
+
+# Use $mod+Ctrl+azx to change language. Just makes life easier for me.
+bindsym $mod+Ctrl+z exec fcitx-remote -s fcitx-keyboard-us
+bindsym $mod+Ctrl+a exec fcitx-remote -s googlepinyin
+bindsym $mod+Ctrl+x exec fcitx-remote -s mozc
+
+# Workspace Switching
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+m workspace $workspaceMusic
+
+# Move Window into Workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+m move container to workspace $workspaceMusic
+
+# Deal with Dual Monitors
+set $firstMonitor LVDS-1
+set $secondMonitor VGA-1
+workspace $workspace1 output $firstMonitor
+workspace $workspace2 output $secondMonitor
+workspace 3 output $firstMonitor
+workspace 4 output $secondMonitor
+workspace 5 output $firstMonitor
+workspace 6 output $secondMonitor
+workspace 7 output $firstMonitor
+workspace 8 output $secondMonitor
+workspace 9 output $firstMonitor
+workspace 10 output $secondMonitor
+
+# Setup screen lock
+# The setup is to dim after 60 seconds. If the user still doesn't respond in 10 second, lock the screen. Shut the computer down after another 1 hour after lock screen.
+set $Locker i3lock-fancy
+exec --no-startup-id ~/.cargo/bin/xidlehook --not-when-fullscreen --not-when-audio --timer normal 60 'xrandr --output "$PRIMARY_DISPLAY" --brightness .1' 'xrandr --output "$PRIMARY_DISPLAY" --brightness 1' --timer primary 10 'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; i3lock-fancy' '' --timer normal 3600 'systemctl suspend' '' 
+bindsym $mod+Mod1+z exec $Locker  
+
+# Reload config file
+bindsym $mod+Shift+c reload
+# Restart i3 if needed
+bindsym $mod+Shift+r restart
+
+# Resize mode
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+
+    # Return to normal
+    bindsym Return mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# System management mode
+set $mode_system SMM (l)ock, (e)xit/logout, (r)eboot, (s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    bindsym Return mode "default"
+}
+bindsym $mod+Shift+q mode "$mode_system"
+
+# Shortcuts to modify volume
+bindsym $mod+bracketleft exec ~/.config/i3/i3blocks-trigger/pulsevolume down
+bindsym $mod+bracketright exec ~/.config/i3/i3blocks-trigger/pulsevolume up
+
+# Colour Time
+# Type                  Border  BG      Text    Indicator Child_Border
+client.focused          #5C636E #F8B500 #393E46 #F8B500   #F7F7F7
+client.focused_inactive #5C636E #5C636E #F7F7F7 #5C636E   #393E46
+client.unfocused        #5C636E #393E46 #F7F7F7 #393E46   #5C636E
+client.urgent           #5C636E #FF0000 #393E46 #FF0000   #FF0000
+client.placeholder      #5C636E #222222 #F7F7F7 #000000   #222222
+
+client.background #393E46
+
+# Bar
+bar {
+     colors {
+	 background #393E46
+	 statusline #F8B500
+	 separator  #5C636E
+
+         #Type              Border  BGround Text
+	 focused_workspace  #F8B500 #F8B500 #393E46 
+	 active_workspace   #5C636E #5C636E #F7F7F7
+	 inactive_workspace #5C636E #5C636E #F7F7F7
+     }
+     status_command i3blocks
+}

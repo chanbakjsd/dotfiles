@@ -1,0 +1,32 @@
+separator=false
+
+[memory]
+interval=30
+command=echo -n " ";/usr/lib/i3blocks/memory
+
+[disk]
+interval=30
+separator=false
+command=echo -n " ";/usr/lib/i3blocks/disk
+
+[iface]
+color=#00FF00
+interval=10
+command=/usr/lib/i3blocks/iface
+
+[cpu-usage]
+interval=10
+command=echo -n " ";~/.config/i3blocks/blocklets/cpu_usage
+
+[temperature]
+interval=10
+command=echo -n " ";~/.config/i3blocks/blocklets/temperature
+
+[pulsevolume]
+interval=once
+signal=1
+command=echo -n " ";~/.config/i3blocks/blocklets/pulsevolume
+
+[time]
+interval=1
+command=date '+%Y-%m-%d %H:%M:%S'

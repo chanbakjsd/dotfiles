@@ -1,0 +1,35 @@
+# Keep things sane and don't upload irrelevant files.
+
+# Ignore everything by default
+*
+
+# Allow this file
+!.gitignore
+
+# Allow Vim stuff
+!.vim/
+!.vim/**
+!.vimrc
+# Ignore all these caches unrelated to config.
+.vim/.netrwhist
+
+# Allow zsh
+!.zshrc
+# Add in oh-my-zsh as a submodule to make debugging easier.
+!.oh-my-zsh
+!.oh-my-zsh/**
+
+# Allow dunst
+!.config/
+!.config/dunst/
+!.config/dunst/**
+
+# Allow i3 and i3blocks
+!.config/i3/
+!.config/i3/**
+!.config/i3blocks/
+!.config/i3blocks/**
+
+# Ignore swap files
+**/*.swp
+**/*.swo
