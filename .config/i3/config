@@ -17,7 +17,7 @@ assign [title=" - Brave$"] workspace $workspace2
 font pango:Fira Code, Awesome 10
 
 floating_minimum_size 50 x 50
-floating_maximum_size 600 x 600 
+floating_maximum_size 600 x 600
 
 # Mod key = Left Windows Key
 set $mod Mod4
@@ -99,8 +99,8 @@ workspace 10 output $secondMonitor
 # Setup screen lock
 # The setup is to dim after 60 seconds. If the user still doesn't respond in 10 second, lock the screen. Shut the computer down after another 1 hour after lock screen.
 set $Locker i3lock-fancy -f "Fira-Code-Bold"
-exec --no-startup-id ~/.cargo/bin/xidlehook --not-when-fullscreen --not-when-audio --timer normal 60 'xrandr --output "$PRIMARY_DISPLAY" --brightness .1' 'xrandr --output "$PRIMARY_DISPLAY" --brightness 1' --timer primary 10 'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; i3lock-fancy' '' --timer normal 3600 'systemctl suspend' '' 
-bindsym $mod+Mod1+z exec $Locker  
+exec --no-startup-id ~/.cargo/bin/xidlehook --not-when-fullscreen --not-when-audio --timer normal 60 'xrandr --output "$PRIMARY_DISPLAY" --brightness .1' 'xrandr --output "$PRIMARY_DISPLAY" --brightness 1' --timer primary 10 'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; i3lock-fancy' '' --timer normal 3600 'systemctl suspend' ''
+bindsym $mod+Mod1+z exec $Locker
 
 # Reload config file
 bindsym $mod+Shift+c reload
@@ -109,25 +109,25 @@ bindsym $mod+Shift+r restart
 
 # Resize mode
 mode "resize" {
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
 
-    # Return to normal
-    bindsym Return mode "default"
+	# Return to normal
+	bindsym Return mode "default"
 }
 bindsym $mod+r mode "resize"
 
 # System management mode
 set $mode_system SMM (l)ock, (e)xit/logout, (r)eboot, (s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $Locker, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym s exec --no-startup-id systemctl poweroff -i, mode "default"
+	bindsym l exec --no-startup-id $Locker, mode "default"
+	bindsym e exec --no-startup-id i3-msg exit, mode "default"
+	bindsym r exec --no-startup-id systemctl reboot, mode "default"
+	bindsym s exec --no-startup-id systemctl poweroff -i, mode "default"
 
-    bindsym Return mode "default"
+	bindsym Return mode "default"
 }
 bindsym $mod+Shift+q mode "$mode_system"
 
@@ -147,26 +147,26 @@ client.background #393E46
 
 # Bottom Bar
 bar {
-     colors {
-	 background #393E46
-	 statusline #F8B500
-	 separator  #5C636E
+	colors {
+		background #393E46
+		statusline #F8B500
+		separator  #5C636E
 
-         #Type              Border  BGround Text
-	 focused_workspace  #F8B500 #F8B500 #393E46 
-	 active_workspace   #5C636E #5C636E #F7F7F7
-	 inactive_workspace #5C636E #5C636E #F7F7F7
-     }
-     status_command i3blocks
+#Type              Border  BGround Text
+		focused_workspace  #F8B500 #F8B500 #393E46
+		active_workspace   #5C636E #5C636E #F7F7F7
+		inactive_workspace #5C636E #5C636E #F7F7F7
+	}
+	status_command i3blocks
 }
 #Top Bar
 bar {
-	 position top
-     colors {
-	 background #393E46
-	 statusline #F8B500
-	 separator  #5C636E
-     }
-	 workspace_buttons no
-     status_command i3blocks -c ~/.config/i3blocks/config_top_bar
+	position top
+	colors {
+		background #393E46
+		statusline #F8B500
+		separator  #5C636E
+	}
+	workspace_buttons no
+	status_command i3blocks -c ~/.config/i3blocks/config_top_bar
 }
