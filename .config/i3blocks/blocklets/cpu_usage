@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 if [ "${BLOCK_BUTTON}" -eq 1 ]; then
     EXPENSIVE=$(ps aux | sort -nrk 3,3 | head -n 5 | awk "{print \$11,\$3}" | sed -E 's@.+/(.+)@\1@')
