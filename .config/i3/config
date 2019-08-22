@@ -145,7 +145,7 @@ client.placeholder      #5C636E #222222 #F7F7F7 #000000   #222222
 
 client.background #393E46
 
-# Bar
+# Bottom Bar
 bar {
      colors {
 	 background #393E46
@@ -158,4 +158,15 @@ bar {
 	 inactive_workspace #5C636E #5C636E #F7F7F7
      }
      status_command i3blocks
+}
+#Top Bar
+bar {
+	 position top
+     colors {
+	 background #393E46
+	 statusline #F8B500
+	 separator  #5C636E
+     }
+	 workspace_buttons no
+     status_command i3blocks -c ~/.config/i3blocks/config_top_bar
 }
