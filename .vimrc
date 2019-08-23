@@ -15,6 +15,13 @@ filetype indent on
 " --Plugin Configurations
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let wiki = {}
+let wiki.path = "~/Projects/vimwiki"
+let wiki.ext = ".md"
+let wiki.syntax = "markdown"
+let wiki.auto_toc = 1
+let g:vimwiki_list = [wiki]
+let g:vimwiki_markdown_link_ext = 1
 
 " --Display
 set title
@@ -47,6 +54,7 @@ set hidden
 noremap // :nohls<CR>
 inoremap jj <Esc>
 
+let mapleader = ","
 noremap ,1 1gt
 noremap ,2 2gt
 noremap ,3 3gt
