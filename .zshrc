@@ -2,6 +2,8 @@
 export PATH=/home/chanbakjsd/Projects/v:$PATH
 export EDITOR=vim
 
+alias vimwiki="vim ~/Projects/vimwiki/index.md"
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/chanbakjsd/.oh-my-zsh"
 
