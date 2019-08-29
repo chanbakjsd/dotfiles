@@ -30,6 +30,7 @@ set ruler
 set wrap
 set scrolloff=3
 set lazyredraw
+set foldmethod=indent
 
 " --Search
 set ignorecase
