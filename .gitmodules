@@ -1,24 +1,24 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh
-[submodule ".vim/bundle/neocomplete.vim"]
-	path = .vim/bundle/neocomplete.vim
+[submodule ".vim/pack/base/start/neocomplete.vim"]
+	path = .vim/pack/base/start/neocomplete.vim
 	url = https://github.com/Shougo/neocomplete.vim
-[submodule ".vim/bundle/vim-airline"]
-	path = .vim/bundle/vim-airline
+[submodule ".vim/pack/base/start/vim-airline"]
+	path = .vim/pack/base/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
-[submodule ".vim/bundle/vimdiscord"]
-	path = .vim/bundle/vimdiscord
+[submodule ".vim/pack/base/start/vimdiscord"]
+	path = .vim/pack/base/start/vimdiscord
 	url = https://github.com/vbe0201/vimdiscord
-[submodule ".vim/bundle/vim-gitgutter"]
-	path = .vim/bundle/vim-gitgutter
+[submodule ".vim/pack/base/start/vim-gitgutter"]
+	path = .vim/pack/base/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
-[submodule ".vim/bundle/vim-go"]
-	path = .vim/bundle/vim-go
+[submodule ".vim/pack/base/start/vim-go"]
+	path = .vim/pack/base/start/vim-go
 	url = https://github.com/fatih/vim-go
-[submodule ".vim/bundle/vim-instant-markdown"]
-	path = .vim/bundle/vim-instant-markdown
+[submodule ".vim/pack/base/start/vim-instant-markdown"]
+	path = .vim/pack/base/start/vim-instant-markdown
 	url = https://github.com/suan/vim-instant-markdown
-[submodule ".vim/bundle/vimwiki"]
-	path = .vim/bundle/vimwiki
+[submodule ".vim/pack/base/start/vimwiki"]
+	path = .vim/pack/base/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki

@@ -6,7 +6,6 @@ endif
 set nocompatible "Vim Users. Not vi users.
 set showcmd "Let us be sane on what we're typing.
 
-execute pathogen#infect()
 syntax on "We love syntax
 filetype on
 filetype plugin on
