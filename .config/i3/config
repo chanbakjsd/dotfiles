@@ -7,12 +7,15 @@ exec --no-startup-id sudo fanup AUTO # Make sure the computer doesn't overheat o
 # Setup workspace
 set $workspace1 "1:  Discord"
 set $workspace2 "2:  Brave"
+set $workspace3 "3:  Keybase"
 set $workspaceMusic "M: ♫ "
 exec --no-startup-id discord-canary
 exec --no-startup-id brave-dev
+exec --no-startup-id keybase-gui
 exec --no-startup-id redshift -l 3.10710:101.61390 -b 0.8:0.8
 assign [class="^discord$"] workspace $workspace1
 assign [title=" - Brave$"] workspace $workspace2
+assign [title="Keybase"] workspace $workspace3
 
 font pango:Fira Code, Awesome 10
 
@@ -59,7 +62,7 @@ bindsym $mod+Ctrl+x exec fcitx-remote -s mozc
 # Workspace Switching
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
-bindsym $mod+3 workspace 3
+bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -72,7 +75,7 @@ bindsym $mod+m workspace $workspaceMusic
 # Move Window into Workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
-bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+3 move container to workspace $workspace3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
@@ -87,7 +90,7 @@ set $firstMonitor LVDS-1
 set $secondMonitor VGA-1
 workspace $workspace1 output $firstMonitor
 workspace $workspace2 output $secondMonitor
-workspace 3 output $firstMonitor
+workspace $workspace3 output $firstMonitor
 workspace 4 output $secondMonitor
 workspace 5 output $firstMonitor
 workspace 6 output $secondMonitor
