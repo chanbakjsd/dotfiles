@@ -16,9 +16,6 @@
 [submodule ".vim/pack/base/start/vim-go"]
 	path = .vim/pack/base/start/vim-go
 	url = https://github.com/fatih/vim-go
-[submodule ".vim/pack/base/start/vim-instant-markdown"]
-	path = .vim/pack/base/start/vim-instant-markdown
-	url = https://github.com/suan/vim-instant-markdown
 [submodule ".vim/pack/base/start/vimwiki"]
 	path = .vim/pack/base/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki
