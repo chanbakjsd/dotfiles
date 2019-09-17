@@ -30,6 +30,7 @@ set wrap
 set scrolloff=3
 set lazyredraw
 set foldmethod=indent
+set foldlevelstart=8 "Don't fold automatically unless really nested
 
 " --Search
 set ignorecase
