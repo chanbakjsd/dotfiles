@@ -72,3 +72,5 @@ noremap ,q :wq<CR>
 noremap ,h :help<SPACE>
 noremap ,s :so ~/.vimrc<CR>
 noremap ,l :GoMetaLinter ./...<CR>
+noremap ,n :cn<CR>
+noremap ,p :cp<CR>
