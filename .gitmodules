@@ -19,3 +19,6 @@
 [submodule ".vim/pack/base/start/vimwiki"]
 	path = .vim/pack/base/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki
+[submodule ".vim/pack/base/start/vim-clang-format"]
+	path = .vim/pack/base/start/vim-clang-format
+	url = https://github.com/rhysd/vim-clang-format
