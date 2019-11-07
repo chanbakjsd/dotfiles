@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=/home/chanbakjsd/Projects/v:$PATH
+export PATH=/home/chanbakjsd/Mirrors/v:$PATH
 export EDITOR=vim
 
 alias vimwiki="vim ~/Projects/vimwiki/index.md"
