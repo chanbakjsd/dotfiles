@@ -87,12 +87,12 @@ autocmd FileType go noremap ,l :GoMetaLinter<SPACE>
 autocmd FileType go map ,ll ,l./...<CR>
 autocmd FileType go map ,lf ,l"%"<CR>
 autocmd FileType go noremap ,c :GoBuild<SPACE>
-autocmd FileType go map ,cc ,c./...<CR>
+autocmd FileType go map ,cc ,c.<CR>
 autocmd FileType go map ,cf ,c"%"<CR>
 autocmd FileType go noremap ,t :GoTest<SPACE>
 autocmd FileType go map ,tt ,t./...<CR>
 autocmd FileType go noremap ,r :GoRun<SPACE>
-autocmd FileType go map ,rr ,r./...<CR>
+autocmd FileType go map ,rr ,r.<CR>
 autocmd FileType go map ,rf ,r"%"<CR>
 autocmd FileType cpp noremap ,c :!clang++ -Wall -Weffc++ -Wextra -Wsign-conversion -std=c++11 -pedantic-errors<SPACE>
 autocmd FileType cpp map ,cf ,c"%"<CR>
