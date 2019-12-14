@@ -12,15 +12,6 @@ filetype plugin on
 filetype indent on
 
 " --Plugin Configurations
-let g:clang_format#auto_format = 1
-let style = {}
-let style.BasedOnStyle = "LLVM"
-let style.IndentWidth = "8"
-let style.UseTab = "Always"
-let style.BreakBeforeBraces = "Linux"
-let style.AllowShortIfStatementsOnASingleLine = "false"
-let style.IndentCaseLabels = "false"
-let g:clang_format#style_options = style
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let wiki = {}
@@ -59,6 +50,20 @@ set noerrorbells
 set backspace=indent,eol,start
 
 set hidden
+
+" --C++ Google Style Formatting
+autocmd FileType cpp setlocal shiftwidth=2
+autocmd FileType cpp setlocal tabstop=2
+autocmd FileType cpp setlocal softtabstop=2
+autocmd FileType cpp setlocal expandtab
+autocmd FileType cpp setlocal textwidth=80
+autocmd FileType cpp setlocal wrap
+autocmd FileType cpp setlocal cindent
+autocmd FileType cpp setlocal cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
+let g:clang_format#auto_format = 1
+let style = {}
+let style.BasedOnStyle = "Google"
+let g:clang_format#style_options = style
 
 " --My cute shortcuts
 noremap // :nohls<CR>
