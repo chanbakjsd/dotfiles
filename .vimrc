@@ -12,6 +12,7 @@ filetype plugin on
 filetype indent on
 
 " --Plugin Configurations
+let g:go_metalinter_enabled = ['deadcode', 'errcheck', 'gosimple', 'govet', 'staticcheck', 'typecheck', 'unused', 'varcheck']
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let wiki = {}
