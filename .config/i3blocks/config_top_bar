@@ -3,6 +3,7 @@ separator=false
 # Requires the group "systemd-journal" to be used by the local user to display all logs.
 # Shows zero entry at start because i3blocks doesn't work well with a bunch of lines dumped at once.
 [config_log]
+align=left
 interval=persist
 command=go run ~/.config/i3blocks/blocklets/realtime_journalctl.go
 markup=pango

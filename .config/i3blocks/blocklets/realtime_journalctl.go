@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	WRAP_LENGTH            = 150
+	WRAP_LENGTH            = 300
 	REPEAT_SPACING         = 10
 	ANIMATION_INTERVAL     = 100 * time.Millisecond
 	BLINK_INTERVAL         = 5
@@ -47,6 +47,9 @@ func main() {
 		if strings.HasPrefix(line, "-- Logs begin at ") {
 			continue
 		}
+		if strings.TrimSpace(line) == "" {
+			continue
+		}
 		currentLine = []rune(line[:len(line)-1])
 	}
 }
@@ -62,8 +65,14 @@ func streamLine() {
 		//Actual looping code
 		var displayText string
 		for i := 0; i < WRAP_LENGTH; i++ {
+			var location int
 			//Loop is kinda eh but it works.
-			location := (loop + i) % (len(lastLine) + REPEAT_SPACING)
+			if loop < BLINK_INTERVAL*4 {
+				// Don't move during blink interval
+				location = i % (len(lastLine) + REPEAT_SPACING)
+			} else {
+				location = (loop + i - BLINK_INTERVAL*4) % (len(lastLine) + REPEAT_SPACING)
+			}
 			if location >= len(lastLine) {
 				displayText += " "
 			} else {
