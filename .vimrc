@@ -61,10 +61,10 @@ autocmd FileType cpp setlocal textwidth=80
 autocmd FileType cpp setlocal wrap
 autocmd FileType cpp setlocal cindent
 autocmd FileType cpp setlocal cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
-let g:clang_format#auto_format = 1
-let style = {}
-let style.BasedOnStyle = "Google"
-let g:clang_format#style_options = style
+autocmd FileType cpp let g:clang_format#auto_format = 1
+autocmd FileType cpp let style = {}
+autocmd FileType cpp let style.BasedOnStyle = "Google"
+autocmd FileType cpp let g:clang_format#style_options = style
 
 " --My cute shortcuts
 noremap // :nohls<CR>
