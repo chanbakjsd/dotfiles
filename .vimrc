@@ -104,3 +104,6 @@ autocmd FileType cpp noremap ,c :!clang++ -Wall -Weffc++ -Wextra -Wsign-conversi
 autocmd FileType cpp map ,cf ,c"%"<CR>
 autocmd FileType cpp map ,r ,c-o a ;./a;rm a<C-Left><C-Left>
 autocmd FileType cpp map ,rf ,r"%"<CR>
+
+" --Macro Template for programming competitions
+autocmd FileType cpp noremap ,p :r ~/.macro.cpp<CR>ggdd/\/\/ <VIM TEMPLATE START><CR>ddO
