@@ -33,3 +33,6 @@
 # Ignore swap files
 **/*.swp
 **/*.swo
+
+# Allow programming macro
+!.macro.cpp
