@@ -22,6 +22,6 @@
 [submodule ".vim/pack/base/start/vim-clang-format"]
 	path = .vim/pack/base/start/vim-clang-format
 	url = https://github.com/rhysd/vim-clang-format
-[submodule ".vim/pack/base/start/v-vim"]
-	path = .vim/pack/base/start/v-vim
-	url = https://github.com/ollykel/v-vim
+[submodule ".vim/pack/base/start/vim-v"]
+	path = .vim/pack/base/start/vim-v
+	url = https://github.com/cheap-glitch/vim-v
