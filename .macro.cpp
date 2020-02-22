@@ -11,6 +11,9 @@ using vll = vec<ll>;
 using vpll = vec<pll>;
 using vstr = vec<str>;
 
+#define stdinout()                  \
+  ios_base::sync_with_stdio(false); \
+  cin.tie(0)
 #define refile(f)                    \
   ifstream inFile(str(f) + ".in");   \
   ofstream outFile(str(f) + ".out"); \
@@ -66,8 +69,7 @@ ll bin_sea(ll lhs, ll rhs, FN checker) {
 }
 
 int main() {
-  ios_base::sync_with_stdio(false);
-  cin.tie(0);
+  // REMINDER: Use `stdinout()` or `refile("abc")`.
 
   // <VIM TEMPLATE START>
 }
