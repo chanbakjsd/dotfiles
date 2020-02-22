@@ -52,6 +52,19 @@ void vecr(vec<T>& arg, ll count) {
   }
 }
 
+template <typename FN>
+ll bin_sea(ll lhs, ll rhs, FN checker) {
+  while (lhs < rhs) {
+    ll mid = (lhs + rhs + 1) / 2;
+    if (checker(mid)) {
+      lhs = mid;
+    } else {
+      rhs = mid - 1;
+    }
+  }
+  return lhs;
+}
+
 int main() {
   ios_base::sync_with_stdio(false);
   cin.tie(0);
