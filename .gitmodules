@@ -25,3 +25,6 @@
 [submodule ".vim/pack/base/start/vim-v"]
 	path = .vim/pack/base/start/vim-v
 	url = https://github.com/cheap-glitch/vim-v
+[submodule ".vim/pack/base/start/tabnine-vim"]
+	path = .vim/pack/base/start/tabnine-vim
+	url = https://github.com/codota/tabnine-vim
