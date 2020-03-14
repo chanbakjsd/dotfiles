@@ -26,7 +26,10 @@ fn main() {
 	used_mem := total_mem - free_mem
 	used_percentage := math.round(f64(used_mem) / total_mem * 100 * 100) / 100
 	mut used_percent_str := used_percentage.strlong()
-	if used_percent_str.len == 4 {
+	if !used_percent_str.contains('.') {
+		used_percent_str += '.'
+	}
+	for used_percent_str.len <= 4 {
 		used_percent_str += '0'
 	}
 	println('${used_percent_str}%')
