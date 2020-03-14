@@ -1,22 +1,21 @@
 separator=false
 
-[memory]
-interval=30
-command=echo -n " ";/usr/lib/i3blocks/memory
-
 [disk]
 interval=30
 separator=false
-command=echo -n " ";/usr/lib/i3blocks/disk
+command=echo -n " ";~/.config/i3blocks/blocklets/disk
 
 [iface]
-color=#00FF00
 interval=10
-command=/usr/lib/i3blocks/iface
+command=echo -n " ";~/.config/i3blocks/blocklets/iface
 
 [cpu-usage]
 interval=10
 command=echo -n " ";~/.config/i3blocks/blocklets/cpu_usage
+
+[memory]
+interval=10
+command=echo -n " ";~/.config/i3blocks/blocklets/memory
 
 [temperature]
 interval=10
