@@ -7,7 +7,7 @@ command=echo -n " ";~/.config/i3blocks/blocklets/disk
 
 [iface]
 interval=10
-command=echo -n " ";~/.config/i3blocks/blocklets/iface
+command=echo -n " ";~/.config/i3blocks/blocklets/iface --interface
 
 [cpu-usage]
 interval=10

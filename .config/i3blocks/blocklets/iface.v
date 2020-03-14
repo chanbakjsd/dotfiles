@@ -26,9 +26,20 @@ fn main() {
 	if state == 'down' {
 		println(down_message) // Full text
 		println(down_message) // Short text
-		println('FF0000')
+		println('#FF0000')
 	}
 
+	if '--interface' in os.args {
+		if get_ip_address(default_device).contains(':') {
+			println('IPv6')
+			println('IPv6')
+		} else {
+			println('IPv4')
+			println('IPv4')
+			println('#FFAAAA')
+		}
+		return
+	}
 	println(get_ip_address(default_device))
 }
 
