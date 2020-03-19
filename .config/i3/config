@@ -3,19 +3,17 @@ exec --no-startup-id xrandr --output LVDS-1 --auto --left-of VGA-1
 exec --no-startup-id nm-applet   # Network Manager
 exec --no-startup-id udiskie  # Automount USB
 exec --no-startup-id fcitx -d # Language switching daemon
-exec --no-startup-id sudo fanup AUTO # Make sure the computer doesn't overheat owo
+exec --no-startup-id sudo fanup MAX # Make sure the computer doesn't overheat owo
 # Setup workspace
 set $workspace1 "1:  Discord"
-set $workspace2 "2:  Brave"
-set $workspace3 "3:  Keybase"
-set $workspaceMusic "M: ♫ "
+set $workspace2 "2:  Firefox"
+set $workspace3 "3:  Terminal"
 exec --no-startup-id discord-canary
-exec --no-startup-id brave-dev
-exec --no-startup-id keybase-gui
+exec --no-startup-id firefox
+exec --no-startup-id i3-msg 'workspace $workspace3;exec termite'
 exec --no-startup-id redshift -l 3.10710:101.61390 -b 0.8:0.8
 assign [class="^discord$"] workspace $workspace1
-assign [title=" - Brave$"] workspace $workspace2
-assign [title="Keybase"] workspace $workspace3
+assign [class="^firefox$"] workspace $workspace2
 
 font pango:Fira Code, Awesome 10
 
@@ -70,7 +68,6 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-bindsym $mod+m workspace $workspaceMusic
 
 # Move Window into Workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -83,7 +80,6 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
-bindsym $mod+Shift+m move container to workspace $workspaceMusic
 
 # Deal with Dual Monitors
 set $firstMonitor LVDS-1
