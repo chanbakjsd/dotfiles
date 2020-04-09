@@ -16,20 +16,24 @@
 # Allow zsh
 !.zshrc
 
-# Allow dunst
+# Config Whitelist (Some programs are naughty and store passwords in .config)
 !.config/
 !.config/dunst/
 !.config/dunst/**
-
-# Allow oh-my-zsh as a submodule to make debugging easier.
-!.config/oh-my-zsh/
-!.config/oh-my-zsh/**
-
-# Allow i3 and i3blocks
 !.config/i3/
 !.config/i3/**
 !.config/i3blocks/
 !.config/i3blocks/**
+!.config/neofetch/
+!.config/neofetch/**
+!.config/oh-my-zsh/
+!.config/oh-my-zsh/**
+!.config/Pinta/
+!.config/Pinta/**
+!.config/termite/
+!.config/termite/**
+!.config/systemd/
+!.config/systemd/**
 
 # Ignore swap files
 **/*.swp
