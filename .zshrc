@@ -5,7 +5,7 @@ export EDITOR=vim
 alias vimwiki="vim ~/Projects/vimwiki/index.md"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/chanbakjsd/.oh-my-zsh"
+export ZSH="/home/chanbakjsd/.config/oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,

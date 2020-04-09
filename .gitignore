@@ -15,14 +15,15 @@
 
 # Allow zsh
 !.zshrc
-# Add in oh-my-zsh as a submodule to make debugging easier.
-!.oh-my-zsh
-!.oh-my-zsh/**
 
 # Allow dunst
 !.config/
 !.config/dunst/
 !.config/dunst/**
+
+# Allow oh-my-zsh as a submodule to make debugging easier.
+!.config/oh-my-zsh/
+!.config/oh-my-zsh/**
 
 # Allow i3 and i3blocks
 !.config/i3/
