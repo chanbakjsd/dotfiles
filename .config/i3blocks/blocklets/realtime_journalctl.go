@@ -44,10 +44,15 @@ func main() {
 		if err != nil {
 			errorAndQuit("IO Error: " + err.Error())
 		}
+		line = strings.TrimSpace(line)
 		if strings.HasPrefix(line, "-- Logs begin at ") {
 			continue
 		}
-		if strings.TrimSpace(line) == "" {
+		if strings.Contains(line, "kernel: nvidia-modeset: WARNING: GPU:0: Unable to read EDID for display device VGA-0") {
+			println(line)
+			continue
+		}
+		if line == "" {
 			continue
 		}
 		currentLine = []rune(line[:len(line)-1])
