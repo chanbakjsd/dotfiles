@@ -34,9 +34,9 @@ bindsym $mod+Shift+p exec dmenu_run # Alternative just in case something breaks
 bindsym $mod+t exec termite # Open the terminal
 
 # Screenshots are fun!
-bindsym $mod+o exec scrot -ub 'Screenshot from %Y-%m-%d %H-%M-%S.png' -e 'mv "$f" /tmp'; exec notify-send -a Scrot Scrot "A screenshot from the current window has been taken."
-bindsym --release $mod+Ctrl+o exec scrot -s 'Screenshot from %Y-%m-%d %H-%M-%S.png' -e 'mv "$f" /tmp'; exec notify-send -a Scrot Scrot "A screenshot from the selection has been taken."'
-bindsym $mod+Shift+o exec scrot 'Screenshot from %Y-%m-%d %H-%M-%S.png' -e 'mv "$f" /tmp'; exec notify-send -a Scrot Scrot "A global screenshot has been taken."
+bindsym --release $mod+o exec ~/.config/i3/screenshot window
+bindsym --release $mod+Ctrl+o exec ~/.config/i3/screenshot selection
+bindsym --release $mod+Shift+o exec ~/.config/i3/screenshot global
 
 # We say hjkl instead of jkl;
 bindsym $mod+h focus left
