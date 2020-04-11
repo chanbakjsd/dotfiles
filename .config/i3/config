@@ -1,5 +1,7 @@
 # Tell xrandr which monitor is on the left and which is on the right.
 exec --no-startup-id xrandr --output LVDS-1-1 --auto --left-of VGA-1-1
+# Make my setup a sane DPI
+exec --no-startup-id xrandr --dpi 96
 exec --no-startup-id nm-applet   # Network Manager
 exec --no-startup-id udiskie  # Automount USB
 exec --no-startup-id fcitx -d # Language switching daemon
@@ -15,7 +17,7 @@ exec --no-startup-id redshift -l 3.10710:101.61390 -b 0.8:0.8
 assign [class="^discord$"] workspace $workspace1
 assign [class="^firefox$"] workspace $workspace2
 
-font pango:Fira Code, Awesome 12
+font pango:Fira Code, Awesome 10
 
 floating_minimum_size 50 x 50
 floating_maximum_size 600 x 600
