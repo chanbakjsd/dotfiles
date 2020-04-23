@@ -28,8 +28,6 @@
 !.config/neofetch/**
 !.config/oh-my-zsh/
 !.config/oh-my-zsh/**
-!.config/Pinta/
-!.config/Pinta/**
 !.config/termite/
 !.config/termite/**
 !.config/systemd/
