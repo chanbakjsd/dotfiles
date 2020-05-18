@@ -28,3 +28,6 @@
 [submodule ".config/oh-my-zsh"]
 	path = .config/oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh
+[submodule ".vim/pack/base/start/vimsence"]
+	path = .vim/pack/base/start/vimsence
+	url = https://github.com/hugolgst/vimsence
