@@ -3,8 +3,9 @@
 # Ignore everything by default
 *
 
-# Allow this file
+# Allow files
 !.gitignore
+!.xinitrc
 
 # Allow Vim stuff
 !.vim/
