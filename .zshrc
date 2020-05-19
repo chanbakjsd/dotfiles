@@ -2,6 +2,7 @@ export PATH=/home/chanbakjsd/Projects/v:$PATH
 export ZSH="/home/chanbakjsd/.config/oh-my-zsh"
 export EDITOR=vim
 
+alias vim="nvim"
 alias vimwiki="vim ~/Projects/vimwiki/index.md"
 
 ZSH_THEME="agnoster"

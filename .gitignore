@@ -26,6 +26,8 @@
 !.config/i3blocks/**
 !.config/neofetch/
 !.config/neofetch/**
+!.config/nvim/
+!.config/nvim/**
 !.config/oh-my-zsh/
 !.config/oh-my-zsh/**
 !.config/termite/
