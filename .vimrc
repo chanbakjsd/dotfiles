@@ -83,15 +83,18 @@ noremap ,8 8gt
 noremap ,9 9gt
 noremap ,0 10gt
 
-noremap ,e :tabedit<SPACE>
-noremap ,q :wq<CR>
+" (q)uit, (w)ith path edit, (e)dit, (r)eload
+noremap ,q :wqa<CR>
+noremap ,w :tabedit<SPACE>
+noremap ,e :tabnew<CR>:Files<CR>
+noremap ,r :so ~/.vimrc<CR>
+" (f)ind in file, (g)rep, (h)elp
+noremap ,f :tabnew<CR>:Find<CR>
+noremap ,g :vimgrep // **/*.<C-R>=expand('%:e')<CR><C-Left><C-Left><Right>
 noremap ,h :help<SPACE>
-noremap ,s :so ~/.vimrc<CR>
+
 noremap ,n :cn<CR>
 noremap ,p :cp<CR>
-noremap ,za :vimgrep // **/*.<C-R>=expand('%:e')<CR><C-Left><C-Left><Right>
-noremap ,zx :Files<CR>
-noremap ,zz :Find<CR>
 
 autocmd FileType go noremap ,l :GoMetaLinter<SPACE>
 autocmd FileType go map ,ll ,l./...<CR>
