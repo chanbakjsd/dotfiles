@@ -38,6 +38,7 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 " --Tab
 set tabstop=4
@@ -88,6 +89,9 @@ noremap ,h :help<SPACE>
 noremap ,s :so ~/.vimrc<CR>
 noremap ,n :cn<CR>
 noremap ,p :cp<CR>
+noremap ,za :vimgrep // **/*.<C-R>=expand('%:e')<CR><C-Left><C-Left><Right>
+noremap ,zx :Files<CR>
+noremap ,zz :Find<CR>
 
 autocmd FileType go noremap ,l :GoMetaLinter<SPACE>
 autocmd FileType go map ,ll ,l./...<CR>

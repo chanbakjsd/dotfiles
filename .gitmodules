@@ -31,3 +31,6 @@
 [submodule ".vim/pack/base/start/vimsence"]
 	path = .vim/pack/base/start/vimsence
 	url = https://github.com/hugolgst/vimsence
+[submodule ".vim/pack/base/start/fzf.vim"]
+	path = .vim/pack/base/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim

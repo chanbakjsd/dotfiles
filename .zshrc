@@ -3,6 +3,7 @@ export PATH=/home/chanbakjsd/Projects/v:$PATH
 export ZSH="/home/chanbakjsd/.config/oh-my-zsh"
 export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-$HOST-$ZSH_VERSION"
 
+alias vf="vim ${fzf}"
 alias vim="nvim"
 alias vimwiki="vim ~/Projects/vimwiki/index.md"
 
