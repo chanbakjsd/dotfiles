@@ -1,5 +1,5 @@
 # Tell xrandr which monitor is on the left and which is on the right.
-exec --no-startup-id xrandr --output LVDS-1-1 --auto --left-of VGA-1-1
+exec --no-startup-id xrandr --output LVDS-1 --auto --left-of VGA-1
 # Make my setup a sane DPI
 exec --no-startup-id xrandr --dpi 96
 exec --no-startup-id nm-applet   # Network Manager
@@ -96,8 +96,8 @@ bindsym $mod+Ctrl+9 move container to workspace 9;workspace 9
 bindsym $mod+Ctrl+0 move container to workspace 10;workspace 10
 
 # Deal with Dual Monitors
-set $firstMonitor LVDS-1-1
-set $secondMonitor VGA-1-1
+set $firstMonitor LVDS-1
+set $secondMonitor VGA-1
 workspace $workspace1 output $firstMonitor
 workspace $workspace2 output $secondMonitor
 workspace $workspace3 output $firstMonitor
