@@ -37,6 +37,7 @@ let wiki.syntax = "markdown"
 let wiki.auto_toc = 1
 let g:vimwiki_list = [wiki]
 let g:vimwiki_markdown_link_ext = 1
+let g:vimwiki_map_prefix = '<Leader>p'
 
 " --Display
 set title
