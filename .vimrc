@@ -12,7 +12,22 @@ filetype plugin on
 filetype indent on
 
 " --Plugin Configurations
-let g:go_metalinter_enabled = ['deadcode', 'errcheck', 'gosimple', 'govet', 'staticcheck', 'typecheck', 'unused', 'varcheck']
+let g:go_metalinter_enabled = [
+	\'bodyclose', 'deadcode', 'errcheck', 'goconst','gocritic',  'gocyclo', 'golint', 'gomnd', 'gosimple', 'govet',
+	\'ineffassign', 'interfacer', 'lll', 'misspell', 'prealloc', 'staticcheck', 'structcheck', 'typecheck', 'unconvert',
+	\'unparam', 'unused', 'varcheck'
+	\]
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+let g:ale_lint_delay = 2000 " Geez. Calm down a little.
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let wiki = {}
