@@ -37,3 +37,6 @@
 [submodule ".vim/pack/base/start/vim-renpy"]
 	path = .vim/pack/base/start/vim-renpy
 	url = https://github.com/chaimleib/vim-renpy
+[submodule ".vim/pack/base/start/ale"]
+	path = .vim/pack/base/start/ale
+	url = https://github.com/dense-analysis/ale
