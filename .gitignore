@@ -11,6 +11,8 @@
 !.vim/
 !.vim/**
 !.vimrc
+# Ignore all backups
+.vim/backup
 # Ignore all these caches unrelated to config.
 .vim/.netrwhist
 

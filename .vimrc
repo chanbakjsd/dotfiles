@@ -39,6 +39,13 @@ let g:vimwiki_list = [wiki]
 let g:vimwiki_markdown_link_ext = 1
 let g:vimwiki_map_prefix = '<Leader>p'
 
+" --BACKUP
+set backup
+set backupdir=~/.vim/backup/
+set writebackup
+set backupcopy=yes
+au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
+
 " --Display
 set title
 set number "Line numbers
