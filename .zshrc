@@ -3,6 +3,14 @@ export PATH=/home/chanbakjsd/go/bin:/home/chanbakjsd/Projects/v:$PATH
 export ZSH="/home/chanbakjsd/.config/oh-my-zsh"
 export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-$HOST-$ZSH_VERSION"
 
+source /home/chanbakjsd/.config/secret.zsh
+shorten() {
+	curl -d"url=$1" -d"pass=$FILEHOST_PASS" https://file.teamortix.com/shorten | xclip -selection clipboard
+}
+up() {
+	curl -F"file=@$1" -F"pass=$FILEHOST_PASS" https://file.teamortix.com/upload | xclip -selection clipboard
+}
+
 alias vf="vim ${fzf}"
 alias vim="nvim"
 alias vimwiki="vim ~/Projects/vimwiki/index.md"
