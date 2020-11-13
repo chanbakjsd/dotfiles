@@ -5,6 +5,7 @@ endif
 
 set nocompatible "Vim Users. Not vi users.
 set showcmd "Let us be sane on what we're typing.
+set rnu "Relative line number
 
 syntax on "We love syntax
 filetype on
@@ -53,6 +54,7 @@ set ruler
 set wrap
 set scrolloff=3
 set lazyredraw
+set termguicolors
 set foldmethod=indent
 set foldlevelstart=8 "Don't fold automatically unless really nested
 
