@@ -57,6 +57,7 @@ set lazyredraw
 set termguicolors
 set foldmethod=indent
 set foldlevelstart=8 "Don't fold automatically unless really nested
+colorscheme vividchalk
 
 " --Search
 set ignorecase

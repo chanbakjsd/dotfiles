@@ -1,12 +1,6 @@
-[submodule ".vim/pack/base/start/neocomplete.vim"]
-	path = .vim/pack/base/start/neocomplete.vim
-	url = https://github.com/Shougo/neocomplete.vim
 [submodule ".vim/pack/base/start/vim-airline"]
 	path = .vim/pack/base/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
-[submodule ".vim/pack/base/start/vimdiscord"]
-	path = .vim/pack/base/start/vimdiscord
-	url = https://github.com/vbe0201/vimdiscord
 [submodule ".vim/pack/base/start/vim-gitgutter"]
 	path = .vim/pack/base/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
@@ -34,9 +28,9 @@
 [submodule ".vim/pack/base/start/fzf.vim"]
 	path = .vim/pack/base/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
-[submodule ".vim/pack/base/start/vim-renpy"]
-	path = .vim/pack/base/start/vim-renpy
-	url = https://github.com/chaimleib/vim-renpy
 [submodule ".vim/pack/base/start/ale"]
 	path = .vim/pack/base/start/ale
 	url = https://github.com/dense-analysis/ale
+[submodule ".vim/pack/base/start/vim-vividchalk"]
+	path = .vim/pack/base/start/vim-vividchalk
+	url = https://github.com/tpope/vim-vividchalk
