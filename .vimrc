@@ -94,6 +94,10 @@ autocmd FileType cpp let style = {}
 autocmd FileType cpp let style.BasedOnStyle = "Google"
 autocmd FileType cpp let g:clang_format#style_options = style
 
+" --Python PEP8
+autocmd FileType python let g:ale_fixers = ["autopep8"]
+autocmd FileType python let g:ale_fix_on_save = 1
+
 " --My cute shortcuts
 noremap // :nohls<CR>
 inoremap jj <Esc>
