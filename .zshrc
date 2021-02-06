@@ -1,7 +1,6 @@
 export EDITOR=vim
-export PATH=/home/chanbakjsd/go/bin:/home/chanbakjsd/Projects/v:/home/chanbakjsd/.local/bin:$PATH
+export PATH=/home/chanbakjsd/go/bin:/home/chanbakjsd/.local/bin:$PATH
 export ZSH="/home/chanbakjsd/.config/oh-my-zsh"
-export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-$HOST-$ZSH_VERSION"
 
 source /home/chanbakjsd/.config/secret.zsh
 shorten() {
