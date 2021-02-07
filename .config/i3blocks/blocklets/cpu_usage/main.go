@@ -25,6 +25,8 @@ const (
 func main() {
 	defer handlePanic()
 
+	fmt.Println("   ??? ")
+
 	ticker := time.NewTicker(5 * time.Second)
 	lastEntry := readProcStat()
 	for {
@@ -54,6 +56,7 @@ func main() {
 	}
 }
 
+// readProcStat reads the CPU usage of `/proc/stat`.
 func readProcStat() []float64 {
 	bytes, err := ioutil.ReadFile("/proc/stat")
 	if err != nil {

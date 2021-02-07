@@ -11,7 +11,7 @@ command=echo -n " ";~/.config/i3blocks/blocklets/iface --interface
 
 [cpu-usage]
 interval=persist
-command=go run ~/.config/i3blocks/blocklets/cpu_usage.go
+command=cd ~/.config/i3blocks/blocklets/cpu_usage && go run main.go
 markup=pango
 
 [memory]
@@ -20,7 +20,7 @@ command=echo -n " ";~/.config/i3blocks/blocklets/memory
 
 [temperature]
 interval=10
-command=echo -n " ";go run ~/.config/i3blocks/blocklets/temperature.go
+command=echo -n " ";go run ~/.config/i3blocks/blocklets/temperature/main.go
 
 [pulsevolume]
 interval=once

@@ -5,5 +5,5 @@ separator=false
 [config_log]
 align=left
 interval=persist
-command=go run ~/.config/i3blocks/blocklets/realtime_journalctl.go
+command=go run ~/.config/i3blocks/blocklets/realtime_journalctl/main.go
 markup=pango
