@@ -3,7 +3,7 @@ separator=false
 [disk]
 interval=30
 separator=false
-command=echo -n " ";~/.config/i3blocks/blocklets/disk
+command=echo -n " ";go run ~/.config/i3blocks/blocklets/disk/main.go / /home
 
 [iface]
 interval=10
