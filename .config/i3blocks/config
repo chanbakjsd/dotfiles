@@ -19,7 +19,7 @@ command=echo -n " ";~/.config/i3blocks/blocklets/memory
 
 [temperature]
 interval=10
-command=echo -n " ";~/.config/i3blocks/blocklets/temperature
+command=echo -n " ";go run ~/.config/i3blocks/blocklets/temperature.go
 
 [pulsevolume]
 interval=once
