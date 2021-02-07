@@ -29,4 +29,4 @@ command=echo -n " ";~/.config/i3blocks/blocklets/pulsevolume
 
 [time]
 interval=1
-command=date '+%Y-%m-%d %H:%M:%S'
+command=date '+%Y-%m-%d %H:%M:%S (%a)'
