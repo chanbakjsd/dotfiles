@@ -10,8 +10,9 @@ interval=10
 command=echo -n " ";~/.config/i3blocks/blocklets/iface --interface
 
 [cpu-usage]
-interval=10
-command=echo -n " ";~/.config/i3blocks/blocklets/cpu_usage
+interval=persist
+command=go run ~/.config/i3blocks/blocklets/cpu_usage.go
+markup=pango
 
 [memory]
 interval=10
