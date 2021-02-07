@@ -5,103 +5,117 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"strings"
 	"time"
 )
 
+// Configuration options for the script.
 const (
-	WRAP_LENGTH            = 300
-	REPEAT_SPACING         = 10
-	ANIMATION_INTERVAL     = 100 * time.Millisecond
-	BLINK_INTERVAL         = 5
-	ALERT_BACKGROUND_COLOR = "#FFFFFF"
+	AlertColour  = "#FFFFFF"
+	DisplayLimit = 170
+	Pace         = 100 * time.Millisecond
+	FlickerCount = 5
 )
 
-var currentLine []rune
-
-func errorAndQuit(reason string) {
-	fmt.Printf("<span background=\"%s\">Internal Error: %s</span>\n", ALERT_BACKGROUND_COLOR, reason)
-	os.Exit(1)
-}
-
 func main() {
-	journal := exec.Command("/usr/bin/journalctl", "-f")
-	pipe, err := journal.StdoutPipe()
-	reader := bufio.NewReader(pipe)
-	if err != nil {
-		errorAndQuit("Journalctl stdout pipe cannot be read: " + err.Error())
+	defer handlePanic()
+
+	output := make(chan string)
+	go fetchJournalLog(output)
+
+	ticker := time.NewTicker(Pace)
+	line := "Waiting for journalctl..."
+	flicker := FlickerCount*2 + 1 // Don't blink at start.
+	scroll := -1
+	for {
+		select {
+		case line = <-output:
+			flicker = 0
+			scroll = -1
+			for len(line) < DisplayLimit {
+				line += " "
+			}
+			if len(line) > DisplayLimit {
+				// Just 10 spaces for padding during scroll.
+				line += "          "
+			}
+			continue
+		case <-ticker.C:
+		}
+
+		// Blink the text FlickerCount times.
+		if flicker < FlickerCount*2 {
+			flicker++
+
+			text := line
+			if len(text) > DisplayLimit {
+				text = text[:DisplayLimit]
+			}
+
+			if flicker%2 == 1 {
+				printAlert(text)
+			} else {
+				fmt.Println(text)
+			}
+			continue
+		}
+
+		if len(line) <= DisplayLimit {
+			// No scroll if it's under DisplayLimit.
+			continue
+		}
+
+		scroll++
+		scroll %= len(line)
+		if scroll+DisplayLimit <= len(line) {
+			// Safe to just print a snippet.
+			fmt.Println(line[scroll : scroll+DisplayLimit])
+			continue
+		}
+
+		// Print the rest of the string.
+		text := line[scroll:]
+		// And wrap around.
+		remainingSpace := len(line) - scroll
+		text += line[:DisplayLimit-remainingSpace]
+		fmt.Println(text)
 	}
-	err = journal.Start()
+}
+
+// fetchJournalLog blocks and listens to `journalctl -f`, feeding lines into the provided channel.
+func fetchJournalLog(output chan<- string) {
+	defer handlePanic()
+
+	// NOTE: Maybe rewrite this at some point to use `-o json`?
+	//       Don't see a point... yet however.
+	cmd := exec.Command("/usr/bin/journalctl", "-f")
+	stdout, err := cmd.StdoutPipe()
 	if err != nil {
-		errorAndQuit("Journalctl command cannot be run: " + err.Error())
+		panic(err)
+	}
+	if err := cmd.Start(); err != nil {
+		panic(err)
 	}
 
-	currentLine = []rune("Started listening to journalctl on " + time.Now().String())
-	go streamLine()
+	bufferedOut := bufio.NewReader(stdout)
 
 	for {
-		line, err := reader.ReadString('\n')
+		line, err := bufferedOut.ReadString('\n')
 		if err != nil {
-			errorAndQuit("IO Error: " + err.Error())
+			panic(err)
 		}
-		line = strings.TrimSpace(line)
-		if strings.HasPrefix(line, "-- Logs begin at ") {
-			continue
-		}
-		if strings.Contains(line, "kernel: nvidia-modeset: WARNING: GPU:0: Unable to read EDID for display device VGA-0") {
-			println(line)
-			continue
-		}
-		if line == "" {
-			continue
-		}
-		currentLine = []rune(line[:len(line)-1])
+		output <- line[:len(line)-1] // Remove the newline
 	}
 }
 
-func streamLine() {
-	lastLine := currentLine
-	loop := 0
-	for {
-		if !equal(lastLine, currentLine) {
-			lastLine = currentLine
-			loop = 0
-		}
-		//Actual looping code
-		var displayText string
-		for i := 0; i < WRAP_LENGTH; i++ {
-			var location int
-			//Loop is kinda eh but it works.
-			if loop < BLINK_INTERVAL*4 {
-				// Don't move during blink interval
-				location = i % (len(lastLine) + REPEAT_SPACING)
-			} else {
-				location = (loop + i - BLINK_INTERVAL*4) % (len(lastLine) + REPEAT_SPACING)
-			}
-			if location >= len(lastLine) {
-				displayText += " "
-			} else {
-				displayText += string(lastLine[location])
-			}
-		}
-		if loop < BLINK_INTERVAL*4 && (loop%(BLINK_INTERVAL*2) < BLINK_INTERVAL) {
-			fmt.Printf("<span background=\"%s\">%s</span>\n", ALERT_BACKGROUND_COLOR, displayText)
-		} else {
-			fmt.Println(displayText)
-		}
-		loop++
-		time.Sleep(ANIMATION_INTERVAL)
-	}
+// printAlert prints the text in AlertColour.
+func printAlert(alertText string) {
+	fmt.Printf(`<span background="%s">%s</span>`+"\n", AlertColour, alertText)
 }
 
-func equal(a, b []rune) bool {
-	if len(a) != len(b) {
-		return false
+// handlePanic is a helper function that recovers and prints out the error before terminating the program.
+func handlePanic() {
+	if err := recover(); err != nil {
+		printAlert("Error: " + fmt.Sprint(err))
+		os.Exit(1)
 	}
-	for i, v := range a {
-		if b[i] != v {
-			return false
-		}
-	}
-	return true
 }
