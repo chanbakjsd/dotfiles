@@ -94,6 +94,9 @@ autocmd FileType cpp let style = {}
 autocmd FileType cpp let style.BasedOnStyle = "Google"
 autocmd FileType cpp let g:clang_format#style_options = style
 
+" --Svelte files are essentially HTML
+autocmd BufRead,BufNewFile *.svelte set filetype=html
+
 " --Python PEP8
 autocmd FileType python let g:ale_fixers = ["autopep8"]
 autocmd FileType python let g:ale_fix_on_save = 1
