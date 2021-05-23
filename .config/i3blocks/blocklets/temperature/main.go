@@ -65,6 +65,9 @@ func main() {
 			registerEntry()
 			continue
 		}
+		if !strings.Contains(v, "temp") {
+			continue
+		}
 
 		split := strings.Split(v, ": ")
 		var err error
