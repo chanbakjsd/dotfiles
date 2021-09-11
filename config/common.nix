@@ -20,6 +20,7 @@
 		});
 	};
 
+	environment.pathsToLink = [ "/share/zsh" ]; # Required for autocompletion.
 	environment.systemPackages = with pkgs; [
 		firefox
 		git
@@ -53,12 +54,15 @@
 		windowManager.i3.enable = true;
 	};
 
+	programs.zsh.enable = true;
+
 	users = {
 		mutableUsers = false; # Force all users to be declared
 		users.chanbakjsd = {
 			isNormalUser = true;
 			extraGroups = [ "wheel" "networkmanager" ];
 			hashedPassword = self.secrets.passwordHash;
+			shell = pkgs.zsh;
 		};
 	};
 
