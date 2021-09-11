@@ -2,12 +2,17 @@
 let
 	modifier = "Mod4";
 	lockText = "(e)xit, (r)estart, (s)hutdown";
+	wallpaper = "${pkgs.nixos-artwork.wallpapers.dracula}/share/backgrounds/nixos/nix-wallpaper-dracula.png";
 in
 {
 	fonts = {
 		names = [ "JetBrains Mono" ];
 		size = 12.0;
 	};
+
+	startup = [
+		{ command = "${pkgs.feh}/bin/feh --bg-scale ${wallpaper}"; notification = false; }
+	];
 
 	focus.mouseWarping = false;
 	modifier = modifier;

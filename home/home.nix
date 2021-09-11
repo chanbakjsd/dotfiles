@@ -7,6 +7,7 @@
 			gtk-application-prefer-dark-theme = 1;
 		};
 	};
+	programs.feh.enable = true;
 	programs.kitty = {
 		enable = true;
 		font = {
