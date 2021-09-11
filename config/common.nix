@@ -33,6 +33,7 @@
 		noto-fonts-cjk
 		noto-fonts-emoji
 		jetbrains-mono
+		font-awesome
 	];
 
 	sound.enable = true;
