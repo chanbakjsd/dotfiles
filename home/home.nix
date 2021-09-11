@@ -1,6 +1,10 @@
 { self, pkgs, lib, ... }@inputs:
 
 {
+	xdg.configFile."nixpkgs/config.nix".text = ''
+		{ allowUnfree = true; }
+	'';
+
 	gtk = {
 		enable = true;
 		gtk3.extraConfig = {
