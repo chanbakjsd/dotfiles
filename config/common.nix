@@ -42,6 +42,11 @@
 	networking.networkmanager.enable = true;
 	networking.dhcpcd.wait = "background"; # Don't wait and immediately go to background.
 
+	systemd.tmpfiles.rules = [
+		"L /home/chanbakjsd/nixos - - - - /persist/nix-config"
+		"L /home/chanbakjsd/Projects - - - - /persist/Projects"
+	];
+
 	services.xserver = {
 		enable = true;
 		displayManager.sddm.enable = true;
