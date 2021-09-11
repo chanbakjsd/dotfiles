@@ -1,0 +1,47 @@
+From f55729aa2b44bb31f44ea7293e359d035eeb4b31 Mon Sep 17 00:00:00 2001
+From: Chan Wen Xu <lutherchanpublic+git@gmail.com>
+Date: Sat, 11 Sep 2021 15:47:29 +0800
+Subject: [PATCH 1/1] Skip expensive call
+
+---
+ os-probes/mounted/common/90linux-distro | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/os-probes/mounted/common/90linux-distro b/os-probes/mounted/common/90linux-distro
+index 41a5553..cac2368 100755
+--- a/os-probes/mounted/common/90linux-distro
++++ b/os-probes/mounted/common/90linux-distro
+@@ -17,7 +17,9 @@ type="$3"
+ # symlinks we need to also check in $dir/usr/lib* for distributions that
+ # moved /lib* to /usr and only left symlinks behind.
+ # TODO: look for ld-linux.so on arches that have it
+-if (ls "$dir"/lib*/ld*.so* && [ -d "$dir/boot" ] || ls "$dir"/usr/lib*/ld*.so*) >/dev/null 2>/dev/null; then
++
++# Avoid expensive search, don't have exotic distros anyways.
++# if (ls "$dir"/lib*/ld*.so* && [ -d "$dir/boot" ] || ls "$dir"/usr/lib*/ld*.so*) >/dev/null 2>/dev/null; then
+ 	if [ -e "$dir/etc/os-release" ]; then
+ 		short="$(grep ^NAME= "$dir/etc/os-release" | sed 's/^[^=]*=//; s/^['\''"]\(.*\)['\''"]$/\1/; s/\\\(.\)/\1/g; s/[[:space:]].*//')"
+ 		long="$(grep ^PRETTY_NAME= "$dir/etc/os-release" | sed 's/^[^=]*=//; s/^['\''"]\(.*\)['\''"]$/\1/; s/\\\(.\)/\1/g')"
+@@ -141,13 +143,14 @@ if (ls "$dir"/lib*/ld*.so* && [ -d "$dir/boot" ] || ls "$dir"/usr/lib*/ld*.so*)
+ 		short="Exherbo"
+ 		long="Exherbo Linux"
+ 	else
+-		short="Linux"
+-		long="unknown Linux distribution"
++		exit 1
++		# short="Linux"
++		# long="unknown Linux distribution"
+ 	fi
+ 	
+         label="$(count_next_label "$short")"
+ 	result "$partition:$long:$label:linux"
+ 	exit 0
+-else
+-	exit 1
+-fi
++# else
++# 	exit 1
++# fi
+-- 
+2.32.0
+
