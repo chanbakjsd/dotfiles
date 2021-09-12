@@ -40,6 +40,9 @@
 				file = "p10k.zsh";
 			}
 		];
+		sessionVariables = {
+			EDITOR = "vim";
+		};
 	};
 	services.flameshot.enable = true;
 	services.polybar = {
