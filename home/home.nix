@@ -25,6 +25,19 @@
 			size = 12;
 		};
 	};
+	programs.neovim = {
+		enable = true;
+		coc.enable = true;
+		vimAlias = true;
+		withNodeJs = true;
+		plugins = with pkgs.vimPlugins; [
+			coc-nvim
+			coc-clangd
+			vim-airline
+			onedark-vim
+		];
+		extraConfig = builtins.readFile ./vimrc;
+	};
 	programs.zsh = {
 		enable = true;
 		enableSyntaxHighlighting = true;

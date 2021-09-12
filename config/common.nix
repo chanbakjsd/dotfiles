@@ -25,7 +25,6 @@
 		firefox
 		git
 		git-crypt
-		vim
 	];
 
 	fonts.fonts = with pkgs; [
