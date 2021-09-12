@@ -5,6 +5,12 @@
 		{ allowUnfree = true; }
 	'';
 
+	home.packages = with pkgs; [
+		discord-canary
+		bitwarden
+		zoom-us        # Class Requirement
+	];
+
 	gtk = {
 		enable = true;
 		gtk3.extraConfig = {
