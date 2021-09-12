@@ -46,8 +46,12 @@
 		enable = true;
 		script = "polybar bar &";
 	};
-	xsession.windowManager.i3 = {
+	xsession = {
 		enable = true;
-		config = import ./i3.nix inputs;
+		numlock.enable = true;
+		windowManager.i3 = {
+			enable = true;
+			config = import ./i3.nix inputs;
+		};
 	};
 }
