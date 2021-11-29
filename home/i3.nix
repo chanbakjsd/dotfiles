@@ -3,6 +3,10 @@ let
 	modifier = "Mod4";
 	lockText = "(e)xit, (r)estart, (s)hutdown";
 	wallpaper = "${pkgs.nixos-artwork.wallpapers.dracula}/share/backgrounds/nixos/nix-wallpaper-dracula.png";
+	keyboardMap = pkgs.writeText "xkb-layout" ''
+		clear Lock
+		keycode 66 = Tab ISO_Left_Tab Tab ISO_Left_Tab
+	'';
 in
 {
 	fonts = {
@@ -12,6 +16,7 @@ in
 
 	startup = [
 		{ command = "${pkgs.feh}/bin/feh --bg-scale ${wallpaper}"; notification = false; }
+		{ command = "${pkgs.xorg.xmodmap}/bin/xmodmap ${keyboardMap}"; notification = false; }
 	];
 
 	focus.mouseWarping = false;
