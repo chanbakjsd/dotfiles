@@ -18,6 +18,7 @@
 				};
 			};
 
+			customPkgs = import ./pkg;
 			secrets = import ./secrets/secrets.nix;
 		};
 }

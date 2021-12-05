@@ -14,11 +14,7 @@
 	nix.extraOptions = "experimental-features = nix-command flakes";
 
 	nixpkgs.config.allowUnfree = true;
-	nixpkgs.config.packageOverrides = pkgs: {
-		os-prober = pkgs.os-prober.overrideAttrs (ori: {
-			patches = [ ./pkg/os-prober.patch ]; # OS Prober is awfully slow in detecting Linux distros.
-		});
-	};
+	nixpkgs.config.packageOverrides = self.customPkgs;
 
 	environment.pathsToLink = [ "/share/zsh" ]; # Required for autocompletion.
 	environment.systemPackages = with pkgs; [
