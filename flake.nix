@@ -16,6 +16,13 @@
 						./config/aspire_hardware.nix
 					];
 				};
+
+				installationMedia = nixpkgs.lib.nixosSystem {
+					system = "x86_64-linux";
+					modules = [
+						(import ./config/installation_media.nix inputs)
+					];
+				};
 			};
 
 			customPkgs = import ./pkg;
