@@ -42,6 +42,7 @@
 		plugins = with pkgs.vimPlugins; [
 			coc-nvim
 			coc-clangd
+			coc-go
 			coc-spell-checker # NOTE: Broken in nixpkgs. Overridden in config/common.nix and pkg/default.nix.
 			vim-airline
 			onedark-vim
