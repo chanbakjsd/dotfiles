@@ -69,6 +69,7 @@
 	};
 	services.flameshot.enable = true;
 	services.gpg-agent.enable = true;
+	services.udiskie.enable = true;
 	services.polybar = {
 		enable = true;
 		script = "polybar bar &";
