@@ -50,6 +50,8 @@
 	systemd.tmpfiles.rules = [
 		"L /home/chanbakjsd/nixos - - - - /persist/nix-config"
 		"L /home/chanbakjsd/Projects - - - - /persist/Projects"
+		"L /home/chanbakjsd/.ssh - - - - /persist/secrets/.ssh"
+		"L /home/chanbakjsd/.gnupg - - - - /persist/secrets/.gnupg"
 	];
 
 	services.xserver = {

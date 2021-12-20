@@ -18,6 +18,15 @@
 		};
 	};
 	programs.feh.enable = true;
+	programs.git = {
+		enable = true;
+		signing = {
+			key = "7E9A74B1B07A7558";
+			signByDefault = true;
+		};
+		userEmail = "lutherchanpublic@gmail.com";
+		userName = "Chan Wen Xu";
+	};
 	programs.kitty = {
 		enable = true;
 		font = {
@@ -59,6 +68,7 @@
 		};
 	};
 	services.flameshot.enable = true;
+	services.gpg-agent.enable = true;
 	services.polybar = {
 		enable = true;
 		script = "polybar bar &";
