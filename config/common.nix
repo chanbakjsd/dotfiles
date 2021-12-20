@@ -31,6 +31,7 @@
 		font-awesome
 	];
 
+	programs.dconf.enable = true;
 	sound.enable = true;
 	hardware.pulseaudio.enable = lib.mkForce false;
 	services.pipewire = {
