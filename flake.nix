@@ -16,6 +16,14 @@
 						./config/aspire_hardware.nix
 					];
 				};
+				nitro = nixpkgs.lib.nixosSystem {
+					system = "x86_64-linux";
+					modules = [
+						(import ./config/common.nix inputs)
+						./config/nitro.nix
+						./config/nitro_hardware.nix
+					];
+				};
 
 				installationMedia = nixpkgs.lib.nixosSystem {
 					system = "x86_64-linux";
