@@ -67,6 +67,14 @@
 		sessionVariables = {
 			EDITOR = "vim";
 		};
+		initExtra = ''
+			function ghc() { # GitHub Clone
+				git clone "ssh://git@github.com/$1"
+			}
+
+			bindkey ";5C" forward-word
+			bindkey ";5D" backward-word
+		'';
 	};
 	services.flameshot.enable = true;
 	services.gpg-agent.enable = true;
