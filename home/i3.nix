@@ -26,6 +26,7 @@ in
 		"${modifier}+t" = "exec ${pkgs.kitty}/bin/kitty";
 		"${modifier}+o" = "exec ${pkgs.flameshot}/bin/flameshot gui";
 		"${modifier}+p" = "exec ${pkgs.dmenu}/bin/dmenu_run";
+		"${modifier}+Mod1+z" = "exec ${pkgs.i3lock-fancy-rapid}/bin/i3lock-fancy-rapid 5 3";
 
 		"${modifier}+Shift+q" = ''mode "${lockText}"'';
 
