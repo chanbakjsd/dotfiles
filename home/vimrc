@@ -61,10 +61,11 @@ inoremap jj <Esc>
 
 " (q)uit, (w)ith path edit, (e)dit, (r)eload
 noremap ,q :wqa<CR>
-noremap ,w :tabedit<SPACE>
-noremap ,e :tabnew<CR>:Files<CR>
+noremap ,w :edit<SPACE>
+noremap ,e :Files<CR>
 noremap ,r :so ~/.vimrc<CR>
 " (h)elp
+noremap ,f :CocCommand explorer --toggle<CR>
 noremap ,h :help<SPACE>
 
 noremap <C-j> :bn<CR>

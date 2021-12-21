@@ -40,11 +40,14 @@
 		vimAlias = true;
 		withNodeJs = true;
 		plugins = with pkgs.vimPlugins; [
+			coc-explorer
 			coc-nvim
 			coc-clangd
 			coc-go
 			coc-spell-checker # NOTE: Broken in nixpkgs. Overridden in config/common.nix and pkg/default.nix.
+			fzf-vim
 			vim-airline
+			vim-go
 			onedark-vim
 		];
 		extraConfig = builtins.readFile ./vimrc;
