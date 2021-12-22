@@ -8,6 +8,7 @@
 	home.packages = with pkgs; [
 		discord-canary
 		bitwarden
+		ripgrep
 		zoom-us        # Class Requirement
 	];
 
