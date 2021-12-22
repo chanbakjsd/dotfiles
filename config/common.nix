@@ -21,6 +21,7 @@
 		firefox
 		git
 		git-crypt
+		steam-run-native
 	];
 
 	fonts.fonts = with pkgs; [
