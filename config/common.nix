@@ -16,6 +16,8 @@
 	nixpkgs.config.allowUnfree = true;
 	nixpkgs.config.packageOverrides = self.customPkgs;
 
+	boot.supportedFilesystems = [ "ntfs" ];
+
 	environment.pathsToLink = [ "/share/zsh" ]; # Required for autocompletion.
 	environment.systemPackages = with pkgs; [
 		firefox
