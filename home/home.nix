@@ -80,6 +80,7 @@
 			bindkey ";5D" backward-word
 		'';
 	};
+	services.dunst.enable  = true;
 	services.flameshot.enable = true;
 	services.gpg-agent.enable = true;
 	services.udiskie.enable = true;
