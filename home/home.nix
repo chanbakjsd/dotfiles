@@ -50,6 +50,7 @@
 			fzf-vim
 			vim-airline
 			vim-go
+			vim-prettier
 			onedark-vim
 		];
 		extraConfig = builtins.readFile ./vimrc;

@@ -68,6 +68,7 @@ noremap ,t :CocCommand explorer --toggle<CR>
 noremap ,d :bp<CR>:bd #<CR>
 noremap ,f :Rg<CR>
 noremap ,h :help<SPACE>
+noremap ,p :PrettierAsync<CR>
 
 noremap <C-j> :bn<CR>
 noremap <C-k> :bp<CR>
