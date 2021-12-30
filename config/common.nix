@@ -6,7 +6,9 @@
 		home-manager.nixosModules.home-manager {
 			home-manager.useGlobalPkgs = true;
 			home-manager.useUserPackages = true;
-			home-manager.users.chanbakjsd = import ../home/home.nix;
+			home-manager.users.chanbakjsd = {
+				imports = import ../home;
+			};
 		}
 	];
 
