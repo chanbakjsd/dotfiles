@@ -27,6 +27,21 @@
 		};
 		userEmail = "lutherchanpublic@gmail.com";
 		userName = "Chan Wen Xu";
+		extraConfig = {
+			core = {
+				excludesfile = "${pkgs.writeText "gitignore" (
+					builtins.concatStringsSep "\n" [
+						".direnv"
+						".envrc"
+						"default.nix"
+					]
+				)}";
+			};
+		};
+	};
+	programs.direnv = {
+		enable = true;
+		nix-direnv.enable = true;
 	};
 	programs.kitty = {
 		enable = true;
@@ -78,8 +93,23 @@
 				git clone "ssh://git@github.com/$1"
 			}
 
+			# Use impure Nix instead of Flakes because Flakes enforces the
+			# files to be committed to Git
+			function mknix() {
+				if [ ! -e ./.envrc ]; then
+					echo "use nix" > .envrc
+					direnv allow
+				fi
+				if [[ ! -e shell.nix ]] && [[ ! -e default.nix ]]; then
+					cat ${./shell.nix.default} > default.nix
+					vim default.nix
+				fi
+			}
+
 			bindkey ";5C" forward-word
 			bindkey ";5D" backward-word
+			bindkey '^H' backward-kill-word
+			bindkey '5~' kill-word
 		'';
 	};
 	services.dunst.enable  = true;
