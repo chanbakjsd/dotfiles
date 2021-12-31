@@ -10,6 +10,7 @@
 		bitwarden
 		ripgrep
 		zoom-us        # Class Requirement
+		wl-clipboard
 	];
 
 	gtk = {

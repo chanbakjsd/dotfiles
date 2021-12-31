@@ -79,6 +79,8 @@ in
 		"L /home/chanbakjsd/.gnupg - - - - /persist/secrets/.gnupg"
 	];
 
+	xdg.portal.enable = true;
+	xdg.portal.wlr.enable = true;
 	programs.sway = {
 		enable = true;
 		extraPackages = with pkgs; [ waybar ];
