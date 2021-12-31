@@ -1,6 +1,20 @@
 { self, home-manager, nixpkgs, ... }:
 { config, pkgs, lib, ... }:
 
+let
+	gtkgreetSwayWrapper = pkgs.writeText "gtkgreet-sway" ''
+		# `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
+		exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l; swaymsg exit"
+
+		bindsym Mod4+shift+q exec swaynag \
+			-t warning \
+			-m 'What do you want to do?' \
+			-b 'Poweroff' 'systemctl poweroff' \
+			-b 'Reboot' 'systemctl reboot'
+
+		include /etc/sway/config.d/*
+	'';
+in
 {
 	imports = [
 		home-manager.nixosModules.home-manager {
@@ -65,11 +79,21 @@
 		"L /home/chanbakjsd/.gnupg - - - - /persist/secrets/.gnupg"
 	];
 
-	services.xserver = {
+	programs.sway = {
 		enable = true;
-		displayManager.sddm.enable = true;
-		windowManager.i3.enable = true;
+		extraPackages = with pkgs; [ waybar ];
+		wrapperFeatures.gtk = true;
 	};
+
+	services.greetd = {
+		enable = true;
+		settings = {
+			default_session = {
+				command = "${pkgs.sway}/bin/sway --config ${gtkgreetSwayWrapper}";
+			};
+		};
+	};
+	environment.etc."greetd/environments".text = "${pkgs.sway}/bin/sway";
 
 	programs.zsh.enable = true;
 

@@ -1,29 +1,36 @@
-{ lib, pkgs, ...} :
+{ lib, pkgs, ...}:
 let
 	modifier = "Mod4";
 	lockText = "(e)xit, (r)estart, (s)hutdown";
 	wallpaper = "${pkgs.nixos-artwork.wallpapers.dracula}/share/backgrounds/nixos/nix-wallpaper-dracula.png";
-	keyboardMap = pkgs.writeText "xkb-layout" ''
-		clear Lock
-		keycode 66 = Tab ISO_Left_Tab Tab ISO_Left_Tab
-	'';
 in
 {
-	programs.feh.enable = true; # Desktop Background
+	wayland.windowManager.sway = {
+		enable = true;
+		wrapperFeatures.gtk = true ;
+	};
 
-	xsession.enable = true;
-	xsession.windowManager.i3.enable = true;
-
-	xsession.windowManager.i3.config = {
+	wayland.windowManager.sway.config = {
 		fonts = {
 			names = [ "JetBrains Mono" ];
 			size = 12.0;
 		};
 
-		startup = [
-			{ command = "${pkgs.feh}/bin/feh --bg-scale ${wallpaper}"; notification = false; }
-			{ command = "${pkgs.xorg.xmodmap}/bin/xmodmap ${keyboardMap}"; notification = false; }
-		];
+		input = {
+			"*" = {
+				xkb_options = "caps:escape";
+				xkb_numlock = "enable";
+			};
+		};
+
+		output = {
+			"*" = {
+				bg = "${wallpaper} fill";
+			};
+		};
+
+		floating.titlebar = true;
+		window.titlebar = true;
 
 		focus.mouseWarping = false;
 		modifier = modifier;
@@ -32,7 +39,7 @@ in
 			"${modifier}+t" = "exec ${pkgs.kitty}/bin/kitty";
 			"${modifier}+o" = "exec ${pkgs.flameshot}/bin/flameshot gui";
 			"${modifier}+p" = "exec ${pkgs.dmenu}/bin/dmenu_run";
-			"${modifier}+Mod1+z" = "exec ${pkgs.i3lock-fancy-rapid}/bin/i3lock-fancy-rapid 5 3";
+			"${modifier}+Mod1+z" = "exec ${pkgs.swaylock-effects}/bin/swaylock --indicator --effect-blur 5x5 --screenshots --clock --datestr '%a, %F' --indicator-radius 100 --fade-in 0.2";
 
 			"${modifier}+Shift+q" = ''mode "${lockText}"'';
 
@@ -44,6 +51,8 @@ in
 			"${modifier}+Shift+j" = "move down";
 			"${modifier}+Shift+k" = "move up";
 			"${modifier}+Shift+l" = "move right";
+
+			"${modifier}+Shift+r" = "reload";
 
 			"${modifier}+Ctrl+1" = "move container to workspace 1;workspace 1";
 			"${modifier}+Ctrl+2" = "move container to workspace 2;workspace 2";
@@ -58,7 +67,7 @@ in
 		};
 		modes = lib.mkOptionDefault {
 			"(e)xit, (r)estart, (s)hutdown" = {
-				"e" = "exec ${pkgs.i3}/bin/i3-msg exit";
+				"e" = "exec ${pkgs.sway}/bin/swaymsg exit";
 				"r" = "exec systemctl reboot";
 				"s" = "exec systemctl poweroff -i";
 				"Escape" = "mode default";
