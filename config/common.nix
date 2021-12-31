@@ -1,4 +1,4 @@
-{ self, home-manager, ... }:
+{ self, home-manager, nixpkgs, ... }:
 { config, pkgs, lib, ... }:
 
 {
@@ -12,8 +12,13 @@
 		}
 	];
 
-	nix.package = pkgs.nixUnstable;
-	nix.extraOptions = "experimental-features = nix-command flakes";
+	nix = {
+		package = pkgs.nixUnstable;
+		extraOptions = "experimental-features = nix-command flakes";
+		nixPath = [
+			"nixpkgs=${nixpkgs.outPath}"
+		];
+	};
 
 	nixpkgs.config.allowUnfree = true;
 	nixpkgs.config.packageOverrides = self.customPkgs;
