@@ -3,8 +3,20 @@ let
 	modifier = "Mod4";
 	lockText = "(e)xit, (r)estart, (s)hutdown";
 	wallpaper = "${pkgs.nixos-artwork.wallpapers.dracula}/share/backgrounds/nixos/nix-wallpaper-dracula.png";
+	keyboardMap = ''
+		default partial alphanumeric_keys
+		xkb_symbols "basic" {
+			include "us(altgr-intl)"
+			include "level3(caps_switch)"
+
+			name[Group1] = "English (US) with Caps as Tabs";
+			key <CAPS> { [ Tab, ISO_Left_Tab ] };
+		};
+	'';
 in
 {
+	xdg.configFile."xkb/symbols/caps-to-tab".text = keyboardMap;
+
 	wayland.windowManager.sway = {
 		enable = true;
 		wrapperFeatures.gtk = true ;
@@ -18,7 +30,7 @@ in
 
 		input = {
 			"*" = {
-				xkb_options = "caps:escape";
+				xkb_layout = "caps-to-tab";
 				xkb_numlock = "enable";
 			};
 		};
