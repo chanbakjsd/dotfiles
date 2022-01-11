@@ -32,6 +32,7 @@ in
 			"*" = {
 				xkb_layout = "caps-to-tab";
 				xkb_numlock = "enable";
+				tap = "enabled";
 			};
 		};
 
