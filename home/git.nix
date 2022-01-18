@@ -8,6 +8,12 @@
 		};
 		userEmail = "lutherchanpublic@gmail.com";
 		userName = "Chan Wen Xu";
+		delta = {
+			enable = true;
+			options = {
+				side-by-side = true;
+			};
+		};
 		extraConfig = {
 			core = {
 				excludesfile = "${pkgs.writeText "gitignore" (
