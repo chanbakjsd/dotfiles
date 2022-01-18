@@ -54,6 +54,7 @@ set hidden
 
 " --Svelte files are essentially HTML
 autocmd BufRead,BufNewFile *.svelte set filetype=html
+autocmd BufRead,BufNewFile *.gunk set filetype=gunk syntax=go
 
 " --My cute shortcuts
 noremap // :nohls<CR>

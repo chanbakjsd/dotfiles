@@ -4,6 +4,7 @@ let
 	discord-version = "0.0.132";
 	discord-hash = "1jjbd9qllgcdpnfxg5alxpwl050vzg13rh17n638wha0vv4mjhyv";
 	node-coc-spell-checker = import ./coc-spell-checker { inherit pkgs; };
+	node-coc-gunk = import ./coc-gunk { inherit pkgs; };
 	node-coc-svelte = import ./coc-svelte { inherit pkgs; };
 in
 {
@@ -18,6 +19,10 @@ in
 		patches = [ ./os-prober.patch ]; # OS Prober is awfully slow in detecting Linux distros.
 	});
 	vimPlugins = pkgs.lib.recursiveUpdate pkgs.vimPlugins {
+		coc-gunk = pkgs.vimUtils.buildVimPlugin {
+			name = "coc-gunk";
+			src = "${node-coc-gunk.coc-gunk}/lib/node_modules/coc-gunk";
+		};
 		coc-spell-checker = pkgs.vimUtils.buildVimPlugin {
 			name = "coc-spell-checker";
 			src = "${node-coc-spell-checker.coc-spell-checker}/lib/node_modules/coc-spell-checker";
