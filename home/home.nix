@@ -22,7 +22,10 @@
 	programs.kitty = {
 		enable = true;
 		font = {
-			name = "JetBrains Mono";
+			package = pkgs.nerdfonts.override {
+				fonts = [ "JetBrainsMono" ];
+			};
+			name = "JetBrainsMono Nerd Font";
 			size = 12;
 		};
 	};
