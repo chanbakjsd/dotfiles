@@ -14,6 +14,12 @@ hi Normal guifg=#eeeeee guibg=#00000ee
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
+let g:copilot_no_tab_map = v:true
+let g:copilot_filetypes = {
+	\ '*': v:false,
+	\ 'gunk': v:true,
+	\ }
+
 " --BACKUP
 set backup
 set backupdir=~/.vim/backup/
@@ -32,6 +38,7 @@ set lazyredraw
 set termguicolors
 set foldmethod=indent
 set foldlevelstart=8 "Don't fold automatically unless really nested
+set colorcolumn=101
 
 " --Search
 set ignorecase
@@ -52,9 +59,9 @@ set backspace=indent,eol,start
 
 set hidden
 
-" --Svelte files are essentially HTML
+" --File Specific Configuration
 autocmd BufRead,BufNewFile *.svelte set filetype=html
-autocmd BufRead,BufNewFile *.gunk set filetype=gunk syntax=go
+autocmd BufRead,BufNewFile *.gunk set filetype=gunk syntax=go colorcolumn=81 tw=80
 
 " --My cute shortcuts
 noremap // :nohls<CR>
@@ -75,6 +82,9 @@ noremap <C-j> :bn<CR>
 noremap <C-k> :bp<CR>
 
 nmap <C-]> <Plug>(coc-definition)
+
+" --Use right arrow instead of Tab for GitHub Copilot
+inoremap <expr> <right> copilot#Accept("")
 
 autocmd FileType cpp noremap ,c :!g++<SPACE>
 autocmd FileType cpp map ,cf ,c"%"<CR>

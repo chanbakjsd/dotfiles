@@ -12,6 +12,7 @@
 		vimAlias = true;
 		withNodeJs = true;
 		plugins = with pkgs.vimPlugins; [
+			copilot-vim
 			coc-explorer
 			coc-nvim
 			coc-clangd
