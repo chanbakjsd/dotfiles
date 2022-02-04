@@ -1,18 +1,19 @@
-pkgs: 
+pkgs:
 
 let
-	discord-version = "0.0.132";
-	discord-hash = "1jjbd9qllgcdpnfxg5alxpwl050vzg13rh17n638wha0vv4mjhyv";
+	swaylock-version = "a8fc557b86e70f2f7a30ca9ff9b3124f89e7f204";
 	node-coc-spell-checker = import ./coc-spell-checker { inherit pkgs; };
 	node-coc-gunk = import ./coc-gunk { inherit pkgs; };
 	node-coc-svelte = import ./coc-svelte { inherit pkgs; };
 in
 {
-	discord-canary = pkgs.discord-canary.overrideAttrs (ori: {
-		version = "0.0.131";
-		src = builtins.fetchurl {
-			url = "https://dl-canary.discordapp.net/apps/linux/${discord-version}/discord-canary-${discord-version}.tar.gz";
-			sha256 = discord-hash;
+	swaylock-effects = pkgs.swaylock-effects.overrideAttrs (ori: {
+		version = swaylock-version;
+		src = pkgs.fetchFromGitHub {
+			owner = "mortie";
+			repo = "swaylock-effects";
+			rev = swaylock-version;
+			sha256 = "sha256-GN+cxzC11Dk1nN9wVWIyv+rCrg4yaHnCePRYS1c4JTk=";
 		};
 	});
 	os-prober = pkgs.os-prober.overrideAttrs (ori: {
